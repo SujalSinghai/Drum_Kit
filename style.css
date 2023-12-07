@@ -1,0 +1,99 @@
+body {
+    margin: 0%;
+    padding: 0%;
+    background-image: url("drum.avif");
+    height: 100%;
+    width: 100%;
+    background-position: top 25% right 0;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+    grid-template-columns: repeat(9, auto);
+    grid-gap: 1rem;
+    margin-left: -15px;
+}
+
+.item {
+    position: relative;
+    background-color: rgba(28, 23, 23, 0.582);
+    border: 2px solid black;
+    border-radius: .5rem;
+    padding: 15px 5px;
+    margin: 5px;
+    transition: all 0.07s ease;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    width: 100px;
+    text-shadow: 0 0 .5rem black;
+    cursor: pointer;
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+}
+
+.Sound {
+    font-size: 20px;
+}
+
+kbd {
+    display: block;
+    font-size: 4rem;
+}
+
+
+
+@media (max-width:799px) {
+    body {
+        background-image: url("drum4.avif");
+        background-size: cover;
+        background-repeat: no-repeat;
+        
+    }
+
+    .container {
+        margin-top: 270px;
+        padding: 0 50px;
+        margin-left: 0px;
+    }
+    .item {
+        padding: 4px 5px;
+        /* margin: 5px; */
+        width: 75px;
+    }
+    kbd { 
+        font-size: 24px;
+    }
+    .item p{
+        justify-content: center;
+    }
+
+}
+
+@media (max-width:500px){
+    body {
+        
+        background-image: url("sujal.jpeg");
+        background-size: cover;
+        background-repeat: repeat;
+        
+        
+    }
+    .item{
+        margin: 0px -6px;
+        padding: 0px 0px;
+        background-color: rgba(177, 167, 167, 0.582);
+    }
+    .container {
+        margin-top: 270px;
+        padding: 0 58px;
+        margin-left: 100px;
+    }
+}

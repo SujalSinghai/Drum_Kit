@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- <img src="photo-1524230659092-07f99a75c013.avif" alt=""> -->
+        <div onclick="playsound()" id="one" data-key="65" class="item"><kbd id="a1" class="keyb"  onclick="playsound()">A</kbd>
+            <p id="one1"  onclick="playsound()" class="Sound">Clap</p>
+
+        </div>
+        <div onclick="playsound()" id="two" data-key="83" class="item"><Kbd  id="a2" class="keyb" onclick="playsound()">S</Kbd>
+            <p id="two1"  onclick="playsound()" class="Sound">HiHat</p>
+
+        </div>
+        <div onclick="playsound()" id="three" data-key="68" class="item"> <kbd id="a3" class="keyb"  onclick="playsound()">D</kbd>
+            <p id="three1" onclick="playsound()" class="Sound">Kick</p>
+        </div>
+        <div onclick="playsound()" id="four" data-key="70" class="item"><kbd id="a4" class="keyb" onclick="playsound()">F</kbd>
+            <p id="four1" onclick="playsound()" class="Sound">OpenHat</p>
+        </div>
+        <div onclick="playsound()" id="five" data-key="71" class="item"><kbd id="a5" class="keyb" onclick="playsound()">G</kbd>
+            <p id="five1" onclick="playsound()" class="Sound">Boom</p>
+        </div>
+        <div onclick="playsound()" id="six" data-key="72" class="item"><kbd id="a6" class="keyb" onclick="playsound()">H</kbd>
+            <p id="six1" onclick="playsound()" class="Sound">Ride</p>
+        </div>
+        <div onclick="playsound()" id="seven" data-key="74" class="item"><kbd id="a7" class="keyb" onclick="playsound()">J</kbd>
+            <p id="seven1" onclick="playsound()" class="Sound">Snare</p>
+        </div>
+        <div onclick="playsound()" id="eight" data-key="75" class="item"><kbd id="a8" class="keyb" onclick="playsound()">K</kbd>
+            <p id="eight1" onclick="playsound()" class="Sound">Tom</p>
+        </div>
+        <div onclick="playsound()" id="nine" data-key="76" class="item"><kbd id="a9" class="keyb" onclick="playsound()">L</kbd>
+            <p id="nine1" onclick="playsound()" class="Sound">Tin </p>
+        </div>
+    </div>
+
+    <audio data-key="65" src="clap.wav"></audio>
+    <audio data-key="83" src="hihat.mp3"></audio>
+    <audio data-key="68" src="kick.mp3"></audio>
+    <audio data-key="70" src="openhat.mp3"></audio>
+    <audio data-key="71" src="boom.mp3"></audio>
+    <audio data-key="72" src="ride.mp3"></audio>
+    <audio data-key="74" src="snare.mp3"></audio>
+    <audio data-key="75" src="tom.mp3"></audio>
+    <audio data-key="76" src="tin.mp3"></audio>
+
+
+
+
+
+
+
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+        window.addEventListener('keydown', function (e) {
+            // console.log(e);
+            // console.log(e.keyCode);
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            // console.log(audio);
+            const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+            key.classList.add('playing')
+
+            if (!audio)
+                return;
+            audio.currentTime = 0;
+            audio.play();
+        })
+
+        const keys = document.querySelectorAll('.item');
+        // console.log(keys);
+        keys.forEach(function (key) {
+            key.addEventListener('transitionend', function (e) {
+                if (e.propertyName !== "transform") return;
+                this.classList.remove('playing');
+            });
+
+        });
+
+
+        function playsound(as) {
+            if (as == "one"||as=="one1" ||as=="a1") {
+                let myaudio = new Audio('clap.wav');
+                myaudio.play();
+            }
+            if (as == "two"|| as=="two1" ||as=="a2") {
+                let myaudio = new Audio('hihat.mp3');
+                myaudio.play();
+            }
+            if (as == "three"||as=="three1" ||as=="a3") {
+                let myaudio = new Audio('kick.mp3');
+                myaudio.play();
+            }
+            if (as == "four"||as=="four1" ||as=="a4") {
+                let myaudio = new Audio('openhat.mp3');
+                myaudio.play();
+            }
+            if (as == "five"||as=="five1" ||as=="a5") {
+                let myaudio = new Audio('boom.mp3');
+                myaudio.play();
+            }
+            if (as == "six"||as=="six1" ||as=="a6") {
+                let myaudio = new Audio('ride.mp3');
+                myaudio.play();
+            }
+            if (as == "seven" ||as=="seven1" ||as=="a7") {
+                let myaudio = new Audio('snare.mp3');
+                myaudio.play();
+            }
+            if (as == "eight"||as=="eight1" ||as=="a8") {
+                let myaudio = new Audio('tom.mp3');
+                myaudio.play();
+            }
+            if (as == "nine"||as=="nine1" ||as=="a9") {
+                let myaudio = new Audio('tin.mp3');
+                myaudio.play();
+            }
+
+        }
+
+        let buttonList = document.querySelectorAll(".item");
+        buttonList.forEach(function (i) {
+            i.addEventListener("click", function (e) {
+                this.classList.add('playing');
+
+                var as = e.target.id;
+                // console.log(as);
+                playsound(as);
+            })
+        })
+        let buttonList1 = document.querySelectorAll(".sound");
+        buttonList.forEach(function (i) {
+            i.addEventListener("click", function (e) {
+                this.classList.add('playing');
+
+                var as = e.target.className;
+                // console.log(as);
+                playsound(as);
+            })
+        })
+        let buttonList2 = document.querySelectorAll(".keyb");
+        buttonList.forEach(function (i) {
+            i.addEventListener("click", function (e) {
+                this.classList.add('playing');
+
+                var as = e.target.className;
+                // console.log(as);
+                playsound(as);
+            })
+        })
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
